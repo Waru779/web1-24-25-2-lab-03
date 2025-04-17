@@ -22,12 +22,26 @@ tableRows.forEach(
          const tr = document.createElement('tr');
          tbody.appendChild(tr);
          keys.forEach(key=>{
+            
             const td = document.createElement('td');
             td.appendChild(td);
             td.innerText = row[key];
+
          });
-    }
-)
+         const td = document.createElement('td');
+         tr.appendChild(td);
+         const btnGroup  = document.createElement('div');
+         td.appendChild(btnGroup);
+         btnGroup.classList.add('btn-group');
+
+         const editBtn = document.createElement('button');
+         btnGroup.appendChild(editBtn);
+         editBtn.classList.add('btn','btn-info');
+         editBtn.innerHTML = "<i class='fa fa-pencil'></i>";
+         editBtn.addEventListener('click', () => {
+            alert(JSON.stringify(row));
+         });
+    });
 };
 
 getAll().then( data => generateTable(data) );
