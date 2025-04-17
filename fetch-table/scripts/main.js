@@ -41,6 +41,16 @@ tableRows.forEach(
          editBtn.addEventListener('click', () => {
             alert(JSON.stringify(row));
          });
+         const deleteBtn = document.createElement('button');
+         btnGroup.appendChild(deleteBtn);
+         deleteBtn.classList.add('btn','btn-danger');
+         deleteBtn.innerHTML = "<i class='fa fa-trash'></i>";
+         deleteBtn.addEventListener('click', async() => {
+            if (confirm('Biztos hogy törlöd az adatsort?')) {
+                await remove(row.id);
+                tr.parentElement.removeChild(tr);
+            }
+         });
     });
 };
 
